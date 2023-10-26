@@ -26,14 +26,9 @@ runs:
         username: ${{inputs.registry_username}}
         password: ${{inputs.registry_password}}
 
-    - name: Setting tag
-      shell: bash
-      run: |
-        echo "final_tag=${{inputs.tag}}" >> $GITHUB_ENV
-
     - name: Build and push Image
       uses: docker/build-push-action@v2
       with:
         context: .
         push: true
-        tags: ${{inputs.registry_username}}/${{inputs.image_name}}:${{env.final_tag}}
+        tags: ${{inputs.registry_username}}/${{inputs.image_name}}:${{inputs.tag}}
