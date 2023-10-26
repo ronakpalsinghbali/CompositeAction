@@ -27,6 +27,7 @@ runs:
         password: ${{inputs.registry_password}}
 
     - name: Setting tag
+      shell: bash
       run: |
         echo "final_tag=${{inputs.tag}}" >> $GITHUB_ENV
 
